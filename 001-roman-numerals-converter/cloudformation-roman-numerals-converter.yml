@@ -5,7 +5,7 @@ Description: >
   Python Flask Web Application on Amazon Linux 2 (ami-026dea5602e368e96) EC2 Instance with custom security group allowing http connections on port 80. Roman Numerals Converter Application is downloaded from Github repository, then installed on Flask.
 
 Resources:
-  WebSecurityGroup:
+  WebServerSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
       GroupDescription: Enable HTTP for Flask Web Server
@@ -17,7 +17,7 @@ Resources:
   WebServerHost:
     Type: 'AWS::EC2::Instance'
     Properties:
-      ImageId: ami-09d95fab7fff3776c
+      ImageId: ami-026dea5602e368e96
       InstanceType: t2.micro
       SecurityGroupIds:
         - !Ref WebServerSecurityGroup
