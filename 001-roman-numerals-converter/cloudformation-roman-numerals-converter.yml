@@ -30,11 +30,11 @@ Resources:
             yum update -y
             yum install python3 -y
             pip3 install flask
-            wget -P templates https://raw.githubusercontent.com/callahan-cw/clarusway-aws-workshop/master/001-roman-numerals-converter/templates/index.html
-            wget -P templates https://raw.githubusercontent.com/callahan-cw/clarusway-aws-workshop/master/001-roman-numerals-converter/templates/result.html
-            wget -P static/styles https://raw.githubusercontent.com/callahan-cw/clarusway-aws-workshop/master/001-roman-numerals-converter/static/styles/master2CSS.css
-            wget -P static/styles https://raw.githubusercontent.com/callahan-cw/clarusway-aws-workshop/master/001-roman-numerals-converter/static/styles/master1CSS.css
-            wget https://raw.githubusercontent.com/callahan-cw/clarusway-aws-workshop/master/001-roman-numerals-converter/roman-numerals-converter-app.py 
+            wget -P templates https://raw.githubusercontent.com/JBCodeWorld/aws-workshop/master/001-roman-numerals-converter/templates/index.html
+            wget -P templates https://raw.githubusercontent.com/JBCodeWorld/aws-workshop/master/001-roman-numerals-converter/templates/result.html
+            wget -P static/styles https://raw.githubusercontent.com/JBCodeWorld/aws-workshop/master/001-roman-numerals-converter/static/styles/master2CSS.css
+            wget -P static/styles https://raw.githubusercontent.com/JBCodeWorld/aws-workshop/master/001-roman-numerals-converter/static/styles/master1CSS.css
+            wget https://raw.githubusercontent.com/JBCodeWorld/aws-workshop/master/001-roman-numerals-converter/roman-numerals-converter-app.py 
             python3 roman-numerals-converter-app.py
 Outputs:
   WebsiteURL:
