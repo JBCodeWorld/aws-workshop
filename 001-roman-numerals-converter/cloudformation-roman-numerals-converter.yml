@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: >
+  CloudFormation Template for Roman Numerals Converter Application. This template creates
+  Python Flask Web Application on Amazon Linux 2 (ami-026dea5602e368e96) EC2 Instance with custom security group allowing http connections on port 80. Roman Numerals Converter Application is downloaded from Github repository, then installed on Flask.
+
+Resources:
+  WebSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Enable HTTP for Flask Web Server
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: 80
+          IpProtocol: tcp
+          ToPort: 80
+  WebServerHost:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: ami-09d95fab7fff3776c
+      InstanceType: t2.micro
+      SecurityGroupIds:
+        - !Ref WebServerSecurityGroup
+      Tags:
+        - Key: Name
+          Value: !Sub 'Web Server of ${AWS::StackName} Stack'
+      UserData:
+        'Fn::Base64': !Sub |
+          #!/bin/bash
+            yum update -y
+            yum install python3 -y
+            pip3 install flask
+            wget -P templates https://raw.githubusercontent.com/callahan-cw/clarusway-aws-workshop/master/001-roman-numerals-converter/templates/index.html
+            wget -P templates https://raw.githubusercontent.com/callahan-cw/clarusway-aws-workshop/master/001-roman-numerals-converter/templates/result.html
+            wget -P static/styles https://raw.githubusercontent.com/callahan-cw/clarusway-aws-workshop/master/001-roman-numerals-converter/static/styles/master2CSS.css
+            wget -P static/styles https://raw.githubusercontent.com/callahan-cw/clarusway-aws-workshop/master/001-roman-numerals-converter/static/styles/master1CSS.css
+            wget https://raw.githubusercontent.com/callahan-cw/clarusway-aws-workshop/master/001-roman-numerals-converter/roman-numerals-converter-app.py 
+            python3 roman-numerals-converter-app.py
+Outputs:
+  WebsiteURL:
+    Value: !Sub 
+      - http://${PublicAddress}
+      - PublicAddress: !GetAtt WebServerHost.PublicDnsName
+    Description: Roman Numerals Converter Application URL

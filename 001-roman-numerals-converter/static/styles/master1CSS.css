@@ -1,0 +1,29 @@
+body {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: black;
+	
+
+}
+
+td {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: black;
+
+
+}
+
+th {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+
+a {
+	font-size: 10pt;
+	color: #0000FF;
+}
+
+a:hover{
+	background-color: #ffcccc;
+}
